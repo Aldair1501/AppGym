@@ -17,11 +17,13 @@ class ClienteMembresiaResource extends Resource
 {
     protected static ?string $model = ClienteMembresia::class;
 
-    protected static ?string $navigationGroup = 'Gestión de Clientes';
+    protected static ?string $navigationGroup = 'Gestión de Clientes y Membresías';
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
     protected static ?string $navigationLabel = 'Asignar Membresías';
     protected static ?string $pluralModelLabel = 'Clientes con Membresía';
     protected static ?string $modelLabel = 'Asignación de Membresía';
+
+     protected static ?int $navigationSort = 1;// ordena el grupo  para elegir cual va arriba del otro
 
     public static function form(Forms\Form $form): Forms\Form
     {

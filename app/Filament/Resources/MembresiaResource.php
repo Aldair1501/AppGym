@@ -22,11 +22,13 @@ class MembresiaResource extends Resource
 {
     protected static ?string $model = Membresia::class;
 
-    protected static ?string $navigationGroup = 'Membresías';
+    protected static ?string $navigationGroup = 'Planes';
     protected static ?string $navigationIcon = 'heroicon-o-gift-top';
     protected static ?string $navigationLabel = 'Planes de Membresía'; // Menú lateral
     protected static ?string $pluralLabel = 'Membresías';     // Encabezado de la tabla
     protected static ?string $modelLabel = 'Membresía';       // En formularios y botones
+
+        protected static ?int $navigationSort = 2 ;
 
     public static function form(Form $form): Form
     {

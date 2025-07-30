@@ -30,6 +30,8 @@ class PagoResource extends Resource
     protected static ?string $pluralModelLabel = 'Pagos';
     protected static ?string $modelLabel = 'Pago';
 
+    protected static ?int $navigationSort = 4 ;
+
     public static function form(Form $form): Form
     {
         return $form->schema([
