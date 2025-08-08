@@ -159,15 +159,10 @@ class PagoResource extends Resource
                 Tables\Actions\ViewAction::make()
                     ->tooltip('Ver detalles del pago'),
 
-                Tables\Actions\EditAction::make()
-                    ->tooltip('Editar este pago'),
-
-                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make()
-                        ->label('Eliminar seleccionados'),
+                  
                 ]),
             ])
             ->emptyStateHeading('No hay pagos registrados')
@@ -189,7 +184,6 @@ class PagoResource extends Resource
         return [
             'index' => Pages\ListPagos::route('/'),
             'create' => Pages\CreatePago::route('/create'),
-            'edit' => Pages\EditPago::route('/{record}/edit'),
         ];
     }
 }

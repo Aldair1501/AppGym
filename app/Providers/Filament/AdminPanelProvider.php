@@ -20,6 +20,9 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin;
 use Filament\Navigation\MenuItem;
 use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
+use Filament\Navigation\NavigationGroup;
+use App\Filament\Widgets\StatsOverview;
+use App\Filament\Widgets\IngresosVsGastosChart;
 
 
 class AdminPanelProvider extends PanelProvider
@@ -29,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->brandName('Golden System') //Nombre de la aplicacion en la parte superior izqueirda
-            ->brandLogo(asset('assets/image/gymlog.jpg')) // logo dentro de la interfaz y login
+            ->brandLogo(asset('assets/image/gym_log.png')) // logo dentro de la interfaz y login
             ->brandLogoHeight('60px')// tamaño del logo de la interfaz y login
             ->favicon(asset('assets/image/capacitacion.png')) // icono navegador 
             ->id('admin')
@@ -46,13 +49,14 @@ class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+               Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
-            ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
-            ])
+
+           ->widgets([
+              //
+           ])
+
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -80,14 +84,13 @@ class AdminPanelProvider extends PanelProvider
             ])
 
             ->plugins([
-               //    FilamentShieldPlugin::make(),
                 FilamentEditProfilePlugin::make()
+                ->setNavigationGroup('Configuración')// Mi perfil estara en el grupo Configuración
                 ->setTitle('Mi Perfil')
                 ->setNavigationLabel('Mi Perfil')
-                ->setNavigationGroup('Configuración')
                 ->setIcon('heroicon-o-user')
-             
             ]);
+
     }
 
 

@@ -14,7 +14,7 @@ class FilamentColorServiceProvider extends ServiceProvider
     'red' => Color::hex('#ef4444'),        // rojo 500
     'orange' => Color::hex('#f97316'),     // naranja 500
     'amber' => Color::hex('#f59e0b'),      // ámbar 500
-    'yellow' => Color::hex('#eab308'),     // amarillo 500
+    'yellow' => Color::hex('#eee01bff'),     // amarillo
     'lime' => Color::hex('#84cc16'),       // lima 500
     'green' => Color::hex('#22c55e'),      // verde 500
     'emerald' => Color::hex('#10b981'),    // esmeralda 500
@@ -25,7 +25,8 @@ class FilamentColorServiceProvider extends ServiceProvider
     'fuchsia' => Color::hex('#d946ef'),    // fucsia 500
     'pink' => Color::hex('#ec4899'),       // rosa 500
     'slate' => Color::hex('#8e18c0ff'),      // pizarra 500
-    'gray' => Color::hex('#6b7280'),       // gris 500
+    'gray' => Color::hex('#6b7280'), 
+    'coffe' => Color::hex('#8d4d00ff'),       // 
         ]);
     }
 }

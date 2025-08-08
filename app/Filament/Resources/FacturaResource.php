@@ -70,14 +70,32 @@ class FacturaResource extends Resource
                     ->label('Total')
                     ->formatStateUsing(fn ($state) => 'Q' . number_format($state, 2))
                     ->sortable(),
+
+                Tables\Columns\BadgeColumn::make('estado')
+                    ->label('Estado')
+                    ->colors([
+                        'success' => 'emitida',
+                        'danger' => 'anulada',
+                    ])
+                    ->sortable(),
+
             ])
             ->filters([
                
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+
+                Tables\Actions\Action::make('anular')
+                ->label('Anular')
+                ->color('danger')
+                ->icon('heroicon-o-x-circle')
+                ->visible(fn ($record) => $record->estado !== 'anulada')
+                ->requiresConfirmation()
+                ->action(function ($record) {
+                    $record->estado = 'anulada';
+                    $record->save();
+                }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -98,7 +116,6 @@ class FacturaResource extends Resource
         return [
             'index' => Pages\ListFacturas::route('/'),
            // 'create' => Pages\CreateFactura::route('/create'),
-            'edit' => Pages\EditFactura::route('/{record}/edit'),
         ];
     }
 }
