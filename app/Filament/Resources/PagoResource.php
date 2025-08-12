@@ -83,6 +83,7 @@ class PagoResource extends Resource
                     ->required(),
 
 
+
                     DatePicker::make('fecha_pago')
                         ->label('Fecha de pago')
                         ->required()
@@ -107,11 +108,11 @@ class PagoResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('cliente.nombre')
-                    ->label('Cliente')
-                    ->sortable()
-                    ->searchable()
-                    ->icon('heroicon-o-user'),
+                TextColumn::make('cliente.nombre_completo')
+                ->label('Cliente')
+                ->searchable()
+                ->sortable()
+                ->icon('heroicon-o-user'),
 
                 TextColumn::make('membresia.nombre')
                     ->label('Membresía')
